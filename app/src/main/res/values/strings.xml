@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MTaxiForPassenger</string>
+    <string name="splash_message">App for passengers</string>
 </resources>
