@@ -6,7 +6,7 @@ import top.moverco.mtaxiforpassenger.common.http.IResponse;
  * Created by Moverco.
  */
 
-public class BaseResponse implements IResponse {
+public class BaseResponseImpl implements IResponse {
     public static final int STATE_OK = 200;
     public static final int STATE_ERROR = -1;
     private int code;
@@ -22,8 +22,10 @@ public class BaseResponse implements IResponse {
     }
 
     public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setData(String body) {
+    public void setData(String content) {
+        this.content = content;
     }
 }

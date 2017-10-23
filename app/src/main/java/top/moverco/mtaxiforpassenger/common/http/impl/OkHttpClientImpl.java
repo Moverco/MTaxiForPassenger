@@ -18,13 +18,14 @@ import top.moverco.mtaxiforpassenger.common.http.IResponse;
 
 public class OkHttpClientImpl implements IHttpClient {
     OkHttpClient mOkHttpClient = new OkHttpClient.Builder().build();
+
     @Override
     public IResponse get(IRequest request, boolean forceCache) {
         request.setMethod(IRequest.GET);
-        Map<String,String> header = request.getHeader();
+        Map<String, String> header = request.getHeader();
         Request.Builder builder = new Request.Builder();
-        for (String key:header.keySet()){
-            builder.header(key,header.get(key));
+        for (String key : header.keySet()) {
+            builder.header(key, header.get(key));
         }
         String url = request.getUrl();
         builder.url(url).get();
@@ -47,16 +48,16 @@ public class OkHttpClientImpl implements IHttpClient {
         builder.url(request.getUrl())
                 .post(body);
         Request oKRequest = builder.build();
-        return  execute(oKRequest);
+        return execute(oKRequest);
     }
+
     private IResponse execute(Request request) {
-        BaseResponse commonResponse = new BaseResponse();
+        BaseResponseImpl commonResponse = new BaseResponseImpl();
         try {
             Response response = mOkHttpClient.newCall(request).execute();
             commonResponse.setCode(response.code());
             String body = response.body().string();
             commonResponse.setData(body);
-
         } catch (IOException e) {
             e.printStackTrace();
             commonResponse.setCode(commonResponse.STATE_ERROR);
