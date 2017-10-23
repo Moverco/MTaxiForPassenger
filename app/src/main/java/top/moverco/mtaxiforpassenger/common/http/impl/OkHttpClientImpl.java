@@ -19,6 +19,10 @@ import top.moverco.mtaxiforpassenger.common.http.IResponse;
 public class OkHttpClientImpl implements IHttpClient {
     OkHttpClient mOkHttpClient = new OkHttpClient.Builder().build();
 
+    public IResponse get(IRequest request) {
+        return get(request, false);
+    }
+
     @Override
     public IResponse get(IRequest request, boolean forceCache) {
         request.setMethod(IRequest.GET);
@@ -32,6 +36,11 @@ public class OkHttpClientImpl implements IHttpClient {
         Request okRequest = builder.build();
         return execute(okRequest);
     }
+
+    public IResponse post(IRequest request) {
+        return get(request, false);
+    }
+
 
     @Override
     public IResponse post(IRequest request, boolean forceCache) {
