@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MTaxiForPassenger</string>
     <string name="splash_message">App for passengers</string>
+    <string name="pls_input_pw">Pls enter your password</string>
+    <string name="pls_input_pw_again">Pls enter your password again</string>
+    <string name="confirm">Confirm</string>
+    <string name="create_pw">Create your password</string>
 </resources>
